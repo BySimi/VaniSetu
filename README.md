@@ -1,64 +1,81 @@
-VaniSetu: The AI-Powered "Voice" Locket 🎙️🤟
-VaniSetu is an ultra-low-cost ($10), Edge-AI wearable designed to bridge the communication gap for the 63 million hearing and speech-impaired individuals in India. By converting 3D sign language gestures into real-time audible speech, it restores independence and dignity to users without the need for bulky gloves or internet-dependent mobile apps.
+# **VaniSetu: The AI-Powered “Voice” Locket 🎙️🤟**
 
-🛑 The Problem
-Interpreter Scarcity: India has a staggering 1:28,000 ratio of certified interpreters to deaf individuals.
+**VaniSetu** is an ultra-low-cost ($10) Edge-AI wearable designed to bridge the communication gap for **63 million hearing and speech-impaired individuals in India**.  
 
-Failure of Existing Tech: * Smart Gloves: Expensive (₹15k+), socially stigmatizing, and physically restrictive.
+It converts **3D sign language gestures** into **real-time audible speech**, enabling independence and dignity — without bulky gloves or internet-dependent apps.
 
-Mobile Apps: Require a "third hand" to hold the phone and fail in offline/rural areas.
+---
 
-✨ The Solution: VaniSetu
-A lightweight, discreet pendant (Locket) that digitizes the user's "signing space" from a first-person perspective.
+## 🛑 **The Problem**
 
-100% Offline: Operates via Access Point (AP) Mode—no internet required.
+### **Interpreter Scarcity**
+- India has an estimated **1:28,000 ratio** of certified interpreters to deaf individuals.
 
-Ultra-Low Latency: Translates gestures to speech in <150ms.
+### **Limitations of Existing Technology**
+- **Smart Gloves**
+  - Expensive (₹15k+)
+  - Socially stigmatizing
+  - Physically restrictive
 
-Dignified Design: A fashion-forward wearable that replaces medical-grade sensors.
+- **Mobile Apps**
+  - Require holding a phone (“third hand” problem)
+  - Fail in offline or rural environments
 
-🛠️ Technical Architecture
-1. Hardware Stack
-Controller: ESP32-CAM (Wi-Fi + BT SoC)
+---
 
-Sensor: OV2640 Wide-Angle Camera (120° FOV)
+## ✨ **The Solution — VaniSetu**
 
-Power: 3.7V Li-Po Battery with TP4056 USB-C Charging Module
+A lightweight, discreet **pendant (locket)** that digitizes the user’s signing space from a first-person perspective.
 
-Enclosure: Custom 3D-printed lightweight chassis
+### **Key Features**
+- ✅ 100% Offline (Access Point Mode — no internet required)
+- ⚡ Ultra-Low Latency (<150 ms gesture-to-speech)
+- 🎯 Dignified, fashion-forward wearable design
 
-2. Software & AI Pipeline
-Computer Vision: MediaPipe Holistic for real-time 21-point skeletal hand landmarking.
+---
 
-Processing: Edge AI logic translates geometric coordinate arrays into linguistic strings.
+## 🛠️ **Technical Architecture**
 
-Communication: Socket Programming for high-speed data streaming between hardware and mobile.
+### **1. Hardware Stack**
+- **Controller:** ESP32-CAM (Wi-Fi + Bluetooth SoC)
+- **Sensor:** OV2640 Wide-Angle Camera (120° FOV)
+- **Power:** 3.7V Li-Po Battery + TP4056 USB-C Charging Module
+- **Enclosure:** Custom lightweight 3D-printed chassis
 
-Speech Synthesis: Python-based gTTS / Pyttsx3 for instant audio output.
+### **2. Software & AI Pipeline**
+- **Computer Vision:** MediaPipe Holistic (21-point hand landmark tracking)
+- **Processing:** Edge-AI logic converts geometric coordinates into linguistic output
+- **Communication:** Socket programming for fast data streaming
+- **Speech Synthesis:** Python-based gTTS / pyttsx3 for instant audio output
 
-🚀 How It Works
-Capture: The locket camera faces the user's hands, streaming frames to a local processing unit (Mobile/Edge device).
+---
 
-Analyze: MediaPipe identifies hand landmarks; the system calculates Euclidean distances and angles to match signs.
+## 🚀 **How It Works**
 
-Speak: The matched word/phrase is instantly converted to audio via a Bluetooth earpiece or phone speaker.
+1. **Capture**  
+   The locket camera faces the user’s hands and streams frames to a local processing unit (mobile/edge device).
 
-📈 Impact & Results
-Cost Reduction: Cut the price of assistive communication tech by 97%.
+2. **Analyze**  
+   MediaPipe detects hand landmarks; Euclidean distances and angles are calculated to recognize signs.
 
-Accessibility: Functions in basements, rural areas, and hospitals with zero connectivity.
+3. **Speak**  
+   Matched words or phrases are converted instantly into audio via Bluetooth earpiece or phone speaker.
 
-Scalability: Modular software allows for easy integration of regional Indian dialects (Hindi, Tamil, Marathi, etc.).
+---
 
-🛠️ Installation & Setup
-Bash
-# Clone the repository
+## 📈 **Impact & Results**
+
+- 💰 **97% cost reduction** compared to traditional assistive tech
+- 🌐 Works in rural areas, hospitals, and low-connectivity environments
+- 🔧 Modular system allows easy addition of Indian dialects (Hindi, Tamil, Marathi, etc.)
+
+---
+
+## 🛠️ **Installation & Setup**
+
+```bash
+# Clone repository
 git clone https://github.com/BySimi/VaniSetu.git
 
 # Install dependencies
 pip install opencv-python mediapipe pyttsx3
-Flash the ESP32-CAM using the provided .ino firmware.
-
-Connect your device to the VaniSetu_AP Wi-Fi network.
-
-Run main.py to start the Vision-to-Voice engine.
